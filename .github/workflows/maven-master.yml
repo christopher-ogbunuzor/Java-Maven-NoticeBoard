@@ -100,5 +100,5 @@ jobs:
         run: docker images | grep -i chriscloudreach
       - name: Publish Docker image
         # run: docker push ${{ secrets.DOCKER_USER }}:latest
-        run: docker push ${{ secrets.DOCKER_USER }}//$REPO:latest
+        run: docker push ${{ secrets.DOCKER_USER }}/$REPO:latest
 
