@@ -94,7 +94,9 @@ jobs:
       - name: Login to Docker Hub
         run: docker login -u ${{ secrets.DOCKER_USER }} -p "${{ secrets.DOCKER_PASS }}"
       - name: Build Docker image
-        run: docker build -t ${{ secrets.DOCKER_USER }}:$REPO -t ${{ secrets.DOCKER_USER }}:${GITHUB_SHA::8} .
+        run: docker build -t ${{ secrets.DOCKER_USER }}:$REPO -t ${{ secrets.DOCKER_USER }}:${GITHUB_SHA::8} -t ${{ secrets.DOCKER_USER }}:latest .
+      - name: List Docker Images
+        run: docker images | grep -i chriscloudreach
       - name: Publish Docker image
-        run: docker push ${{ secrets.DOCKER_USER }}
+        run: docker push ${{ secrets.DOCKER_USER }}:latest
 
